@@ -1,0 +1,62 @@
+<!doctype html>
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,user-scalable=no,initial-scale=1" name="viewport">
+    <header th:replace="header::html"></header>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/index.js"></script>
+</head>
+<body>
+<br>
+<a href="/" style="font-size: 18px;color: #336699;margin-left: 20px">返回</a>
+<div class="m-reg-box">
+    <h1>登录</h1>
+    <a href="/api/getPage?pageName=reg"><span style="float: right;color: #336699;margin-bottom: 10px;">没有账号？申请一个</span></a>
+    <form class="layui-form">
+        <!--<input type="text" name="username" lay-verify="required" th:value="${username}" autocomplete="off" class="layui-input" placeholder="请输入用户名" style="height: 45px;">-->
+        <!--<input type="text" name="username" autocomplete="off" placeholder="请输入用户名" class="layui-input" style="height: 45px;">-->
+        <input type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="layui-input" style="height: 45px;">
+        <!--<input type="text" name="password" autocomplete="off" placeholder="请输入密码" class="layui-input" style="height: 45px;">-->
+        <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input" style="height: 45px;">
+        <div class="layui-form-item">
+            <button class="layui-btn" lay-filter="add" style="margin-top: 60px;" lay-submit="">确定</button>
+        </div>
+    </form>
+</div>
+<script>
+
+    layui.use(['form','layer', 'laydate'], function(){
+        $ = layui.jquery;
+        var form = layui.form
+            ,layer = layui.layer
+            ,laydate = layui.laydate;
+
+        //监听提交
+        form.on('submit(add)', function(data){
+            // layer.alert(JSON.stringify(data.field), {
+            //     title: '最终的提交信息'
+            // })
+            $.ajax({
+                url:"/login",
+                type:"POST",
+                // data:JSON.stringify(data.field),
+                data:data.field,
+                // dataType:'json',
+                success:function(result){
+                    if(result.code == 500) {
+                        layer.alert("您输入的用户名或密码错误");
+                        window.location.reload();
+                    }
+                    if(result.code == 200) {
+                        layer.alert("登录成功");
+                        window.location.href='/';
+                    }
+                }
+            });
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,user-scalable=no,initial-scale=1" name="viewport">
+    <header th:replace="header::html"></header>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/index.js"></script>
+</head>
+<body class="index" style="min-height: 0;">
+    <div style="height: 45px;width: 100%;background: #F3F2ED;font-size: 20px;padding-top: 25px;text-align: center;">
+        <a href="/dep/list" style="font-size: 18px;color: #336699;position: absolute;left: 20px">返回</a>
+        <span th:text="${dtoList[0].depName}"></span>
+    </div>
+    <div class="layui-tab-item layui-show" style="height: 680px;padding: 0 15px">
+        <div class="m-doc-list">
+            <a th:each="doctorDTO:${dtoList}" th:href="@{'/doc/detail/'+${doctorDTO.id}}">
+                <div class="m-doc-list-box" style="display: flex;margin-top: 22px;border-bottom: 1px solid #F3F2ED;">
+                    <img class="doc-pic" src="/images/doc1.png" style="width: 20%;height: 90px;border-radius: 100%;border: 1px #ccc solid"/>
+                    <div class="intro" style="width: 73%;height: 150px;padding-left: 15px;margin-bottom: 15px;">
+                        <span style="font-size: 20px;font-weight: bold;" th:text="${doctorDTO.sysUser.nickname}"></span>
+                        <!--<i class="layui-icon layui-icon-star" style="font-size: 30px;float: right;"></i>-->
+                        <p style="font-size: 14px;color: #666;margin-top: 5px">副主任医师</p>
+                        <span style="font-size: 14px;color: #666;margin-top: 4px" th:text="${doctorDTO.regcount}+挂号量"></span>
+                        <span style="font-size: 14px;color: #666;margin-top: 4px;margin-left: 12px;" th:text="${doctorDTO.inqcount}+问诊量"></span>
+                        <p style="font-size: 14px;margin-top: 5px" th:text="${#strings.abbreviate(doctorDTO.intro,25)}"></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $('#inquiry').css("color","#336699");
+            $('#inquiry').css('font-weight','bold');
+
+            $('#index').click(function(){
+                window.location.href='/';
+            });
+            $('#reg').click(function(){
+                window.location.href='/reg/list';
+            });
+        });
+    </script>
+</body>
+</html>

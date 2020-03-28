@@ -1,0 +1,104 @@
+<!doctype html>
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,user-scalable=no,initial-scale=1" name="viewport">
+    <header th:replace="header::html"></header>
+    <!--<link rel="stylesheet" href="/user/medical/src/main/resources/static/xadmin/css/font.css">-->
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/index.js"></script>
+</head>
+<body class="index" style="min-height: 0;">
+    <!--y轴超出部分有显示滚动条-->
+    <div class="layui-tab-item layui-show" style="height: 738px;padding: 15px;overflow-y: auto;">
+        <div class="search" style="display: flex;justify-content: space-around;margin-bottom: 15px;">
+            <input type="text" placeholder="请输入您要搜索的关键词..." class="layui-input" style="height: 40px;width: 90%;">
+            <i class="layui-icon layui-icon-search" style="font-size: 34px;"></i>
+        </div>
+
+        <!--轮播图开始-->
+        <div class="layui-carousel" id="test1">
+            <div carousel-item>
+                <div><img src="images/ad.jpg"/></div>
+                <div><img src="images/ad2.png"/></div>
+                <div><img src="images/ad3.png"/></div>
+                <div><img src="images/ad.jpg"/></div>
+                <div><img src="images/ad3.png"/></div>
+            </div>
+        </div>
+        <!-- 条目中可以是任意内容，如：<img src=""> -->
+        <script>
+            layui.use('carousel', function(){
+                var carousel = layui.carousel;
+                //建造实例
+                carousel.render({
+                    elem: '#test1'
+                    ,width: '100%' //设置容器宽度
+                    ,arrow: 'always' //始终显示箭头
+                    //,anim: 'updown' //切换动画方式
+                });
+            });
+        </script>
+        <!--轮播图结束-->
+
+        <!--文章列表开始-->
+        <div class="m-art-list">
+            <div class="m-art-list-box" th:each="article:${allArticles}">
+                <div class="intro">
+                    <h2 th:text="${#strings.abbreviate(article.title,22)}"></h2>
+                    <p class="s-fs-14" th:text="${#strings.abbreviate(article.description,30)}"></p>
+                    <p class="s-f-c-6" style="text-align: right;padding-right: 14px;" th:text="${#dates.format(article.updateTime,'yyyy-MM-dd HH:mm')}"></p>
+                </div>
+                <img class="art-pic" th:src="${article.imgurl}"/>
+            </div>
+        </div>
+        <!--文章列表结束-->
+    </div>
+
+    <!--底部导航栏开始-->
+    <ul style="border-bottom-style: none;display: flex;justify-content: space-around;border-top: 1px solid #ccc;padding-top: 12px;">
+        <li id="index"><i class="layui-icon layui-icon-home" style="font-size: 35px"></i></li>
+        <li id="reg"><i class="layui-icon layui-icon-log" style="font-size: 35px"></i></li>
+        <li id="inquiry"><i class="layui-icon layui-icon-chat" style="font-size: 35px"></i></li>
+        <li id="mine"><i class="layui-icon layui-icon-username" style="font-size: 35px"></i></li>
+    </ul>
+    <!--底部导航栏结束-->
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('#index').css("color","#336699");
+        $('#index').css('font-weight','bold');
+
+        $('#reg').click(function(){
+            window.location.href='/reg/list';
+        });
+
+        $('#inquiry').click(function(){
+            // window.location.href='/api/getPage?pageName=tologin';
+            window.location.href='/inq/list';
+        });
+
+        $('#mine').click(function(){
+            // window.location.href='/api/getPage?pageName=tologin';
+            window.location.href='/api/getPage?pageName=reg/reg-submit';
+        });
+
+
+        //需要测试就打开下面这两个
+        // $('#reg').click(function(){
+        //     window.location.href='/api/getPage?pageName=dep/dep-list';
+        // });
+        //
+        // $('#inquiry').click(function(){
+        //     // window.location.href='/api/getPage?pageName=tologin';
+        //     window.location.href='/api/getPage?pageName=doc/doc-list';
+        // });
+        // $('#mine').click(function(){
+        //     // window.location.href='/api/getPage?pageName=tologin';
+        //     window.location.href='/api/getPage?pageName=doc/doc-detail';
+        // });
+    });
+</script>
+</body>
+</html>

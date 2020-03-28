@@ -1,0 +1,110 @@
+<!doctype html>
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,user-scalable=no,initial-scale=1" name="viewport">
+    <header th:replace="header::html"></header>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/index.js"></script>
+</head>
+<body class="index" style="min-height: 0;">
+<div style="height: 45px;width: 100%;background: #F3F2ED;font-size: 20px;padding-top: 25px;text-align: center;">
+    <a th:href="@{'/doc/'+${doctorDTO.depid}}" style="font-size: 18px;color: #336699;position: absolute;left: 20px">返回</a>
+    <span>医生详情</span>
+    <!--<i class="layui-icon layui-icon-star-fill" style="font-size: 30px;position: absolute;right: 29px;top: 22px;color: #FFB800"></i>-->
+    <i class="layui-icon layui-icon-star" style="font-size: 30px;position: absolute;right: 29px;top: 22px;"></i>
+</div>
+<div class="layui-tab-item layui-show" style="height: 680px;padding: 0 15px">
+    <div class="m-doc-list">
+        <div class="m-doc-list-box" style="display: flex;margin-top: 22px;border-bottom:0">
+            <img class="doc-pic" src="/images/doc1.png" style="width: 20%;height: 90px;border-radius: 100%;border: 1px #ccc solid"/>
+            <div class="intro" style="width: 73%;height: 150px;padding-left: 15px;margin-bottom: 15px;">
+                <span style="font-size: 20px;font-weight: bold;" th:text="${doctorDTO.sysUser.nickname}"></span>
+                <p style="font-size: 14px;color: #666;margin-top: 5px">副主任医师</p>
+                <button type="button" class="layui-btn" style="position: absolute;top: 93px;right: 29px;">在线问诊</button>
+                <!--<p style="font-size: 14px;margin-top: 17px;">7041挂号量  223问诊量</p>-->
+                <span style="font-size: 14px;color: #666;margin-top: 4px" th:text="${doctorDTO.regcount}+挂号量"></span>
+                <span style="font-size: 14px;color: #666;margin-top: 4px;margin-left: 12px;" th:text="${doctorDTO.inqcount}+问诊量"></span>
+            </div>
+        </div>
+
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>个人简介</legend>
+        </fieldset>
+
+        <p style="font-size: 16px;color: #666;line-height: 28px;padding: 15px;padding-left: 30px;text-indent:2em" th:text="${doctorDTO.intro}"></p>
+
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+            <legend>预约挂号</legend>
+        </fieldset>
+
+
+        <div class="layui-collapse" lay-filter="test" style="margin: 40px 30px;">
+            <div class="layui-colla-item" style="padding: 5px 0;" th:each="dutyDTO:${dutyDTOList}">
+                <h2 class="layui-colla-title" style="font-size: 19px;" th:text="${dutyDTO.time}"></h2>
+                <div class="layui-colla-content">
+                    <p style="font-size: 18px;margin: 15px 0 15px 20px;height: 31px;"
+                        th:each="chilDuty:${dutyDTO.chilDutys}">[[${chilDuty.time}]]
+                        <a th:href="@{'/reg/submit/'+${chilDuty.id}}">
+                            <button type="button" class="layui-btn" style="float: right">预约</button>
+                        </a>
+                    </p>
+                    <!--th:href="@{'/**/'+${chilDuty.id}}"-->
+                </div>
+            </div>
+            <!--<div class="layui-colla-item" style="padding: 5px 0;">-->
+                <!--<h2 class="layui-colla-title" style="font-size: 19px;">2020-03-25 下午</h2>-->
+                <!--<div class="layui-colla-content">-->
+                    <!--<p style="font-size: 18px;margin: 15px 0 15px 20px;height: 31px;">14:30-14:59-->
+                        <!--<a href="/"><button type="button" class="layui-btn" style="float: right">预约</button></a>-->
+                    <!--</p>-->
+
+                    <!--<p style="font-size: 18px;margin: 15px 0 15px 20px;height: 31px;">15:00-15:29-->
+                        <!--<a href="/"><button type="button" class="layui-btn" style="float: right">预约</button></a>-->
+                    <!--</p>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <!--<div class="m-register-box" style="padding-left: 30px;margin-bottom: 25px;">-->
+            <!--<div style="float: left;width: 86%;">-->
+                <!--<p style="font-size: 18px;color: #666;">2020-03-22 下午</p>-->
+                <!--<span style="color: #ccc;font-size: 14px;">专家门诊</span>-->
+                <!--<span style="color: red;font-size: 14px;margin-left: 5px;">50.00元</span>-->
+            <!--</div>-->
+            <!--<button type="button" class="layui-btn" style="margin-top: 7px;">预约</button>-->
+        <!--</div>-->
+        <!--<div class="m-register-box" style="padding-left: 30px;margin-bottom: 25px;">-->
+            <!--<div style="float: left;width: 86%;">-->
+                <!--<p style="font-size: 18px;color: #666;">2020-03-22 下午</p>-->
+                <!--<span style="color: #ccc;font-size: 14px;">专家门诊</span>-->
+                <!--<span style="color: red;font-size: 14px;margin-left: 5px;">50.00元</span>-->
+            <!--</div>-->
+            <!--<button type="button" class="layui-btn" style="margin-top: 7px;">预约</button>-->
+        <!--</div>-->
+        <!--<div class="m-register-box" style="padding-left: 30px;margin-bottom: 25px;">-->
+            <!--<div style="float: left;width: 86%;">-->
+                <!--<p style="font-size: 18px;color: #666;">2020-03-22 下午</p>-->
+                <!--<span style="color: #ccc;font-size: 14px;">专家门诊</span>-->
+                <!--<span style="color: red;font-size: 14px;margin-left: 5px;">50.00元</span>-->
+            <!--</div>-->
+            <!--<button type="button" class="layui-btn" style="margin-top: 7px;">预约</button>-->
+        <!--</div>-->
+    </div>
+</div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('#inquiry').css("color","#336699");
+        $('#inquiry').css('font-weight','bold');
+
+        $('#index').click(function(){
+            window.location.href='/';
+        });
+        $('#reg').click(function(){
+            window.location.href='/reg/list';
+        });
+    });
+</script>
+</body>
+</html>

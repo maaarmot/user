@@ -1,0 +1,76 @@
+<!doctype html>
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,user-scalable=no,initial-scale=1" name="viewport">
+    <header th:replace="header::html"></header>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/index.js"></script>
+</head>
+<body class="index" style="min-height: 0;">
+<div style="height: 45px;width: 100%;background: #F3F2ED;font-size: 20px;padding-top: 25px;text-align: center;">
+    <a href="/reg/list" style="font-size: 18px;color: #336699;position: absolute;left: 20px">返回</a>
+    <span>预约信息</span>
+    <i class="layui-icon layui-icon-star-fill" style="font-size: 30px;position: absolute;right: 29px;top: 22px;color: #FFB800"></i>
+</div>
+<div class="layui-tab-item layui-show" style="height: 680px;padding: 0 15px">
+    <div class="m-doc-list">
+        <div class="m-doc-list-box" style="display: flex;margin-top: 22px;border-bottom: 1px solid #F3F2ED;">
+            <img class="doc-pic" src="/images/doc1.png" style="width: 20%;height: 90px;border-radius: 100%;border: 1px #ccc solid"/>
+            <div class="intro" style="width: 73%;height: 150px;padding-left: 15px;margin-bottom: 15px;">
+                <span style="font-size: 20px;font-weight: bold;" th:text="${registerDTO.doctorDTO.sysUser.nickname}">张翠花</span>
+                <p style="font-size: 14px;color: #666;margin-top: 5px">副主任医师</p>
+                <button type="button" class="layui-btn" style="position: absolute;top: 93px;right: 29px;">在线问诊</button>
+                <!--<p style="font-size: 14px;margin-top: 17px;">7041挂号量  223问诊量</p>-->
+                <span style="font-size: 14px;color: #666;margin-top: 4px" th:text="${registerDTO.doctorDTO.regcount}+挂号量"></span>
+                <span style="font-size: 14px;color: #666;margin-top: 4px;margin-left: 12px;" th:text="${registerDTO.doctorDTO.inqcount}+问诊量"></span>
+            </div>
+        </div>
+
+        <div style="font-size: 16px;color: #666;padding: 8px 15px;margin-top: 15px;display: flex;justify-content: space-between">
+            <p>就诊医院</p>
+            <p>南方医科大学南方医院</p>
+        </div>
+        <div style="font-size: 16px;color: #666;padding: 8px 15px;display: flex;justify-content: space-between">
+            <p>就诊科室</p>
+            <p th:text="${registerDTO.depName}">创伤骨外科门诊</p>
+        </div>
+        <div style="font-size: 16px;color: #666;padding: 8px 15px;display: flex;justify-content: space-between">
+            <p>门诊时间</p>
+            <p th:text="${registerDTO.parDuty}">2020-03-22下午</p>
+        </div>
+        <div style="font-size: 16px;color: #666;padding: 8px 15px;display: flex;justify-content: space-between">
+            <p>预约时段</p>
+            <p th:text="${registerDTO.chilDuty}">14:00-14:30</p>
+        </div>
+        <div style="font-size: 16px;color: #666;padding: 8px 15px;display: flex;justify-content: space-between">
+            <p>门诊类型</p>
+            <p>专家</p>
+        </div>
+        <div style="font-size: 16px;color: #666;padding: 8px 15px;display: flex;justify-content: space-between">
+            <p>挂号费用</p>
+            <p>50.00元</p>
+        </div>
+        <div style="font-size: 16px;color: #666;padding: 8px 15px;padding-bottom: 20px;display: flex;justify-content: space-between;border-bottom: 1px solid #F3F2ED;">
+            <p>就诊人</p>
+            <p th:text="${registerDTO.nickname}">王花花</p>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('#inquiry').css("color","#336699");
+        $('#inquiry').css('font-weight','bold');
+
+        $('#index').click(function(){
+            window.location.href='/';
+        });
+        $('#reg').click(function(){
+            window.location.href='/reg/list';
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+/*首页*/
+.art-list-title a{text-decoration: none;}
+.s-p-l-15{padding-left: 15px;}
+.s-m-t-15{margin-top: 15px;}
+.s-m-b-15{margin-bottom: 15px;}
+.s-f-c-6{color: #666;}
+.s-fs-14{font-size: 14px}
+.m-art-list{background: #FFF;width: 100%;}
+.m-art-list-box{margin-top: 30px;}
+.m-art-list .intro{width: 65%;display: flex;flex-direction: column;justify-content: space-between;float: left}
+.m-art-list .art-pic{width: 35%}
+/*登录页*/
+.m-reg-box{width: 80%;margin: 100px auto;height: 320px}
+.m-reg-box input{margin-top: 15px;font-size: 16px;border-radius: 5px;color: #666;}
+.m-reg-box .layui-btn{width: 100%;margin-top: 15px;font-size: 16px;height: 45px;border-radius: 5px;}
+/*咨询页*/
+/*.m-inq-top{height: 45px;width: 100%;background: #F3F2ED;font-size: 20px;text-align: center;padding-top: 25px;}*/
+/*.m-inq{height: 680px;padding: 0 15px}*/
+/*.m-doc-list-box{display: flex;margin-top: 22px;border-bottom: 1px solid #F3F2ED;}*/
+/*.m-doc-list-box img{width: 20%;height: 90px;border-radius: 100%;border: 1px #ccc solid}*/
+/*.m-doc-list-box .intro{width: 73%;height: 150px;padding-left: 15px;margin-bottom: 15px;}*/
+/*.m-doc-list-box .intro .doc{font-size: 20px;font-weight: bold;}*/
+/*.m-doc-list-box .intro .status{font-size: 16px;color: #666;float: right;}*/
+/*.m-doc-list-box .intro .dep{font-size: 14px;color: #666;margin-top: 5px}*/
+/*.m-doc-list-box .intro .time{font-size: 14px;color: #ccc;margin-top: 4px}*/
+/*.m-doc-list-box .intro .desc{font-size: 14px;margin-top: 5px}*/
+::-webkit-scrollbar{  /*隐藏所有滚动条*/
+    width: 0;
+    height: 0;
+    display: none;
+}

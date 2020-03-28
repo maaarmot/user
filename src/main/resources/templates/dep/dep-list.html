@@ -1,0 +1,124 @@
+<!doctype html>
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,user-scalable=no,initial-scale=1" name="viewport">
+    <header th:replace="header::html"></header>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/index.js"></script>
+</head>
+<body class="index" style="min-height: 0;">
+<div style="height: 45px;width: 100%;background: #F3F2ED;font-size: 20px;padding-top: 25px;text-align: center;">
+    <a href="/reg/list" style="font-size: 18px;color: #336699;position: absolute;left: 20px">返回</a>
+    <span>选择科室</span>
+</div>
+<div class="layui-collapse" lay-filter="test" style="padding: 40px 20px;border-bottom: 0;">
+    <div class="layui-colla-item" style="padding: 5px 0;" th:each="departmentDTO:${departmentDTOList}">
+        <h2 class="layui-colla-title" style="font-size: 19px;" th:text="${departmentDTO.name}"></h2>
+        <div class="layui-colla-content">
+            <a th:each="department:${departmentDTO.chilDeps}" th:href="@{'/doc/'+${department.id}}">
+                <p style="font-size: 18px;margin: 12px 0;" th:text="${department.name}"></p>
+            </a>
+            <!--<p style="font-size: 18px;margin: 12px 0;"  th:each="department:${departmentDTO.chilDeps}" th:text="${department.name}"></p>-->
+        </div>
+    </div>
+    <!--<div class="layui-colla-item" style="padding: 5px 0;">-->
+        <!--<h2 class="layui-colla-title" style="font-size: 19px;">专科</h2>-->
+        <!--<div class="layui-colla-content">-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">介入科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">康复理疗科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">护理专家门诊</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">营养科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">心理科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">药学门诊</p>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="layui-colla-item" style="padding: 5px 0;">-->
+        <!--<h2 class="layui-colla-title" style="font-size: 19px;">内科</h2>-->
+        <!--<div class="layui-colla-content">-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">心血管内科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">呼吸内科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">消化内科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">神经内科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">肾病中心</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">肾移植科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">血液内科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">风湿免疫病科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">感染内科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">内分泌科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">呼吸睡眠中心</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">老年病科门诊</p>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="layui-colla-item" style="padding: 5px 0;">-->
+        <!--<h2 class="layui-colla-title" style="font-size: 19px;">外科</h2>-->
+        <!--<div class="layui-colla-content">-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">普外科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">胸外科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">神经外科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">肝胆外科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">肛肠科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">泌尿外科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">血管外科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">整形外科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">乳腺科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">烧伤科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">心血管外科</p>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="layui-colla-item" style="padding: 5px 0;">-->
+        <!--<h2 class="layui-colla-title" style="font-size: 19px;">骨科</h2>-->
+        <!--<div class="layui-colla-content">-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">关节与骨病外科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">脊柱骨科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">创伤骨外科</p>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="layui-colla-item" style="padding: 5px 0;">-->
+        <!--<h2 class="layui-colla-title" style="font-size: 19px;">妇产科</h2>-->
+        <!--<div class="layui-colla-content">-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">妇科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">产科门诊</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">生殖中心</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">胎儿医学科门诊</p>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="layui-colla-item" style="padding: 5px 0;">-->
+        <!--<h2 class="layui-colla-title" style="font-size: 19px;">儿科</h2>-->
+        <!--<div class="layui-colla-content">-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">小儿科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">新生儿科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">胎儿医学科门诊</p>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="layui-colla-item" style="padding: 5px 0;">-->
+        <!--<h2 class="layui-colla-title" style="font-size: 19px;">中医科</h2>-->
+        <!--<div class="layui-colla-content">-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">中医内科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">中医风湿科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">古中医疑难杂症门诊</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">中医正骨科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">中医妇科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">中医针灸科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">中医外科</p>-->
+            <!--<p style="font-size: 18px;margin: 12px 0;">中医儿科</p>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('#inquiry').css("color","#336699");
+        $('#inquiry').css('font-weight','bold');
+
+        $('#index').click(function(){
+            window.location.href='/';
+        });
+        $('#reg').click(function(){
+            window.location.href='/reg/list';
+        });
+    });
+</script>
+</body>
+</html>

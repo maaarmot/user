@@ -1,0 +1,76 @@
+<!doctype html>
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,user-scalable=no,initial-scale=1" name="viewport">
+    <header th:replace="header::html"></header>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/index.js"></script>
+</head>
+<body class="index" style="min-height: 0;">
+<div style="height: 45px;width: 100%;background: #F3F2ED;font-size: 20px;text-align: center;padding-top: 25px;">
+    <span style="margin-left: 90px">我的挂号</span>
+    <a href="/dep/list"><button type="button" class="layui-btn layui-btn-warm" style="float: right;margin-right: 25px;background-color: #369;">去挂号</button></a>
+</div>
+<div class="layui-tab-item layui-show" style="height: 680px;padding: 0 15px">
+    <div class="m-doc-list">
+        <a th:each="registerDTO:${registerDTOList}" th:href="@{'/reg/detail/'+${registerDTO.id}}">
+            <div class="m-doc-list-box" style="display: flex;margin-top: 22px;border-bottom: 1px solid #F3F2ED;">
+                <img class="doc-pic" src="/images/doc1.png" style="width: 20%;height: 90px;border-radius: 100%;border: 1px #ccc solid"/>
+                <div class="intro" style="width: 73%;height: 150px;padding-left: 15px;margin-bottom: 15px;">
+                    <span style="font-size: 20px;font-weight: bold;"th:text="${registerDTO.doctorDTO.sysUser.nickname}"></span>
+                    <span style="font-size: 16px;color: #666;float: right;color: red">未进行</span>
+                    <p style="font-size: 14px;color: #666;margin-top: 5px;margin-bottom: 18px;" th:text="${registerDTO.depName}"></p>
+                    <span style="font-size: 16px;color: #666;margin-top: 18px;" th:text="${registerDTO.parDuty}"></span>
+                    <span style="font-size: 16px;color: #666;margin-top: 18px;" th:text="${registerDTO.chilDuty}"></span>
+                </div>
+            </div>
+        </a>
+        <!--<div class="m-doc-list-box" style="display: flex;margin-top: 22px;border-bottom: 1px solid #F3F2ED;">-->
+            <!--<img class="doc-pic" src="/images/doc2.png" style="width: 20%;height: 90px;border-radius: 100%;border: 1px #ccc solid"/>-->
+            <!--<div class="intro" style="width: 73%;height: 150px;padding-left: 15px;margin-bottom: 15px;">-->
+                <!--<span style="font-size: 20px;font-weight: bold;">张翠花</span>-->
+                <!--<span style="font-size: 16px;color: #666;float: right;">已取消</span>-->
+                <!--<p style="font-size: 14px;color: #666;margin-top: 5px">副主任医师|皮肤科</p>-->
+                <!--<p style="font-size: 16px;color: #666;margin-top: 18px;">2020-03-19 11:00-11:29</p>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="m-doc-list-box" style="display: flex;margin-top: 22px;border-bottom: 1px solid #F3F2ED;">-->
+            <!--<img class="doc-pic" src="/images/doc3.png" style="width: 20%;height: 90px;border-radius: 100%;border: 1px #ccc solid"/>-->
+            <!--<div class="intro" style="width: 73%;height: 150px;padding-left: 15px;margin-bottom: 15px;">-->
+                <!--<span style="font-size: 20px;font-weight: bold;">张翠花</span>-->
+                <!--<span style="font-size: 16px;color: #666;float: right;">已完成</span>-->
+                <!--<p style="font-size: 14px;color: #666;margin-top: 5px">副主任医师|皮肤科</p>-->
+                <!--<p style="font-size: 16px;color: #666;margin-top: 18px;">2020-03-18 11:00-11:29</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+    <!--咨询列表结束-->
+</div>
+
+<!--底部导航栏开始-->
+<ul style="border-bottom-style: none;display: flex;justify-content: space-around;">
+    <li id="index"><i class="layui-icon layui-icon-home" style="font-size: 35px"></i></li>
+    <li id="reg"><i class="layui-icon layui-icon-log" style="font-size: 35px"></i></li>
+    <li id="inquiry"><i class="layui-icon layui-icon-chat" style="font-size: 35px"></i></li>
+    <li><i class="layui-icon layui-icon-username" style="font-size: 35px"></i></li>
+</ul>
+<!--底部导航栏结束-->
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('#reg').css("color","#336699");
+        $('#reg').css('font-weight','bold');
+
+        $('#index').click(function(){
+            window.location.href='/';
+        });
+
+        $('#inquiry').click(function(){
+            window.location.href='/inq/list';
+        });
+    });
+</script>
+</body>
+</html>
